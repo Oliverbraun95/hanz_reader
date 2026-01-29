@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanz Reader - AI Difficulty Analysis</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Hanz Reader</h1>
+            <p class="subtitle">Advanced Chinese Difficulty Analysis Engine</p>
+        </header>
+
+        <div class="card input-card">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('url')">URL Analysis</button>
+                <button class="tab-btn" onclick="switchTab('text')">Raw Text</button>
+            </div>
+
+            <!-- URL Input -->
+            <div id="url-input-section">
+                <input type="text" id="url-input"
+                    placeholder="Paste article URL (e.g. https://www.bbc.com/zhongwen/simp/...)">
+            </div>
+
+            <!-- Text Input -->
+            <div id="text-input-section" style="display: none;">
+                <textarea id="text-input" placeholder="Paste Chinese text here..."></textarea>
+            </div>
+
+            <button class="btn-primary" id="analyze-btn" onclick="analyze()">Analyze Difficulty</button>
+
+            <div class="loader" id="loader">Processing...</div>
+            <div id="error-msg" style="color: #f87171; text-align: center; margin-top: 1rem; display: none;"></div>
+        </div>
+
+        <!-- Results -->
+        <div id="results-area" class="card">
+            <h2 id="res-title" style="margin-top: 0; font-size: 1.5rem; margin-bottom: 0.5rem;">Analysis Result</h2>
+            <p id="res-url"
+                style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; overflow-wrap: break-word;">
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="score-val">-</div>
+                    <div class="stat-label">HSK Level</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="tokens-val">0</div>
+                    <div class="stat-label">Total Words</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="unknown-val">0%</div>
+                    <div class="stat-label">Unknown Words</div>
+                </div>
+            </div>
+
+            <div class="coverage-section">
+                <h3>Vocabulary Coverage</h3>
+                <!-- HSK 1-6 Bars -->
+                <div id="coverage-bars">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
