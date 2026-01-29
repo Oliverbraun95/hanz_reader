@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "hanz-reader"
+version = "0.1.0"
+description = "Chinese text difficulty analysis service"
+authors = ["Antigravity <antigravity@example.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = "^0.30.0"
+pandas = "^2.2.0"
+jieba = "^0.42.1"
+pydantic = "^2.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
